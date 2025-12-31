@@ -1,0 +1,10 @@
+numpy
+pandas
+seaborn
+matplotlib
+tqdm
+mlflow
+mlxtend
+scikit-learn
+xgboost
+-e .
