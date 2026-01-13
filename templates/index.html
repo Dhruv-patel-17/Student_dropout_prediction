@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Student Dropout Prediction</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='style.css')}}">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Student Dropout Prediction</h1>
+
+        <form action="{{url_for('predict')}}" method="POST" id="predictForm">
+
+            <label>Marital Status</label>
+            <select id="marital_status" name="Marital status" required>
+                <option value="">--Select Marital Status</option>
+                <option value="single">single</option>
+                <option value="married">married</option>
+                <option value="widower">widower</option>
+                <option value="divorced">divorced</option>
+                <option value="facto union">facto union</option>
+                <option value="legally separated">legally separated</option>
+            </select>
+
+            <label>Application mode</label>
+            <select id="application_mode" name="Application mode" required>
+                <option value="">--Select Application mode</option>
+                <option value="1st phase general contingent">1st phase general contingent</option>
+                <option value="Ordinance no.612/93">Ordinance no.612/93</option>
+                <option value="1st phase special contingent (Azores island)">1st phase special contingent (Azores
+                    island)</option>
+                <option value="Holders of other higher courses">Holders of other higher courses</option>
+                <option value="Ordinance no. 854-B/99">Ordinance no. 854-B/99</option>
+                <option value="International student (bachelor)">International student (bachelor)</option>
+                <option value="1st phase special contingent (Madeira island)">1st phase special contingent (Madeira
+                    island)</option>
+                <option value="2nd phase general contingent">2nd phase general contingent</option>
+                <option value="3rd phase general contingent">3rd phase general contingent</option>
+                <option value="Ordinance no.533-A/99 item b2 (Different plan)">Ordinance no.533-A/99 item b2 (Different
+                    plan)</option>
+                <option value="Ordinance no.533-A/99 item b3 (Other institution)">Ordinance no.533-A/99 item b3 (Other
+                    institution)</option>
+                <option value="Over 23 years old">Over 23 years old</option>
+                <option value="Transfer">Transfer</option>
+                <option value="Change of courses">Change of courses</option>
+                <option value="Technological specialization diploma holders">Technological specialization diploma
+                    holders</option>
+                <option value="Change of institution/course">Change of institution/course</option>
+                <option value="Short cycle diploma holders">Short cycle diploma holders</option>
+                <option value="Change of institution/course (international)">Change of institution/course
+                    (international)</option>
+            </select>
+
+            <label for="Application_order">Application order</label>
+            <input type="number" id="application_order" name="Application order" min="1" max="20"
+                placeholder="Enter order of application" required>
+
+
+            <label>Course</label>
+            <select id="course" name="Course" required>
+                <option value="">--Select Course</option>
+                <option value="Biofuel Production Technologies">Biofuel Production Technologies</option>
+                <option value="Animation and Multimedia Design">Animation and Multimedia Design</option>
+                <option value="Social Service (evening attendance)">Social Service (evening attendance)</option>
+                <option value="Agronomy">Agronomy</option>
+                <option value="Communication Design">Communication Design</option>
+                <option value="Veterinary Nursing">Veterinary Nursing</option>
+                <option value="Informatics Engineering">Informatics Engineering</option>
+                <option value="Equiniculture">Equiniculture</option>
+                <option value="Management">Management</option>
+                <option value="Social Service">Social Service</option>
+                <option value="Tourism">Tourism</option>
+                <option value="Nursing">Nursing</option>
+                <option value="Oral Hygiene">Oral Hygiene</option>
+                <option value="Advertising and Marketing Management">Advertising and Marketing Management</option>
+                <option value="Journalism and Communication">Journalism and Communication</option>
+                <option value="Basic Education">Basic Education</option>
+                <option value="Management (evening attendance)">Management (evening attendance)</option>
+            </select>
+
+
+            <label>Daytime/evening attendance</label>
+            <select id="daytime_evening_attendance" name="Daytime/evening attendance" required>
+                <option value="">--Select Daytime/evening attendance</option>
+                <option value="evening">evening</option>
+                <option value="daytime">daytime</option>
+            </select>
+
+
+
+            <label>Previous qualification</label>
+            <select id="previous_qualification" name="Previous qualification" required>
+                <option value="">--Select Previous Qualification</option>
+                <option value="Secondary education">Secondary education</option>
+                <option value="Higher education-bachelor's degree">Higher education-bachelor's degree</option>
+                <option value="Higher education-degree">Higher education-degree</option>
+                <option value="Higher education-master's">Higher education-master's</option>
+                <option value="Higher education-doctorate">Higher education-doctorate</option>
+                <option value="Frequency of higher education">Frequency of higher education</option>
+                <option value="12th year of schooling-not completed">12th year of schooling-not completed</option>
+                <option value="11th year of schooling-not completed">11th year of schooling-not completed</option>
+                <option value="11th year of schooling">11th year of schooling</option>
+                <option value="10th year of schooling">10th year of schooling</option>
+                <option value="10th year of schooling-not completed">10th year of schooling-not completed</option>
+                <option value="Basic education 3rd cycle (9th/10th/11th year) or equiv">Basic education 3rd cycle
+                    (9th/10th/11th year) or equiv</option>
+                <option value="Basic education 2nd cycle (6th/7th/8th year) or equiv">Basic education 2nd cycle
+                    (6th/7th/8th year) or equiv</option>
+                <option value="Technological specialization course">Technological specialization course</option>
+                <option value="Journalism and Communication">Journalism and Communication</option>
+                <option value="Higher education-degree (1st cycle)">Higher education-degree (1st cycle)</option>
+                <option value="Professional higher technical course">Professional higher technical course</option>
+                <option value="Higher education-master (2nd cycle)">Higher education-master (2nd cycle)</option>
+            </select>
+
+
+            <label>Mother's qualification</label>
+            <select id="mothers_qualification" name="Mother's qualification" required>
+                <option value="">--Select Mother's Qualification</option>
+                <option value="Secondary education-12th year of schooling">Secondary education-12th year of schooling
+                </option>
+                <option value="Higher education Bachelor's degree">Higher education Bachelor's degree</option>
+                <option value="Higher education degree">Higher education degree</option>
+                <option value="Higher education-master's">Higher education-master's</option>
+                <option value="Higher education-Doctorate">Higher education-Doctorate</option>
+                <option value="Frequency of higher education">Frequency of higher education</option>
+                <option value="12th year of schooling-not completed">12th year of schooling-not completed</option>
+                <option value="11th year of schooling-not completed">11th year of schooling-not completed</option>
+                <option value="7th year (old)">7th year (old)</option>
+                <option value="11th year of Schooling">11th year of Schooling</option>
+                <option value="2nd year complementary high school course">2nd year complementary high school course
+                </option>
+                <option value="10th year of schooling">10th year of schooling</option>
+                <option value="General commerce course">General commerce course</option>
+                <option value="Basic education 3rd cycle(9th/10/11th year) or equiv">Basic education 3rd
+                    cycle(9th/10/11th year) or equiv</option>
+                <option value="Complementary high school course">Complementary high school course</option>
+                <option value="Technical-professional course">Technical-professional course</option>
+                <option value="Complementary high school course-not concluded">Complementary high school course-not
+                    concluded</option>
+                <option value="7th year of schooling">7th year of schooling</option>
+                <option value="2nd cycle of the general high school course">2nd cycle of the general high school course
+                </option>
+                <option value="9th year of schooling-not completed">9th year of schooling-not completed</option>
+                <option value="General course of administration and commerce">General course of administration and
+                    commerce</option>
+                <option value="Supplementary accounting and administration">Supplementary accounting and administration
+                </option>
+                <option value="Unknown">Unknown</option>
+                <option value="Can't read or write">Can't read or write</option>
+                <option value="can read without having a 4th year of schooling">can read without having a 4th year of
+                    schooling</option>
+                <option value="Basic education 1st cycle (4th/5th year) or equiv">Basic education 1st cycle (4th/5th
+                    year) or equiv</option>
+                <option value="Basic education 2nd cycle (6th/7th/8th year) or equiv">Basic education 2nd cycle
+                    (6th/7th/8th year) or equiv</option>
+                <option value="Technological specialization course">Technological specialization course</option>
+                <option value="Higher education-degree (1st cycle)">Higher education-degree (1st cycle)</option>
+                <option value="Specialized higher studies course">Specialized higher studies course</option>
+                <option value="Professional higher technical course">Professional higher technical course</option>
+                <option value="Higher education-master (2nd cycle)">Higher education-master (2nd cycle)</option>
+                <option value="Higher education-Doctorate (3rd cycle)">Higher education-Doctorate (3rd cycle)</option>
+            </select>
+
+
+
+            <label>Father's occupation</label>
+            <select id="fathers_occupation" name="Father's occupation" required>
+                <option value="">--Select Father's occupation</option>
+                <option value="Student">Student</option>
+                <option
+                    value="Representatives of the legislative power and executive bodies,directors and executive managers">
+                    Representatives of the legislative power and executive bodies,directors and executive managers
+                </option>
+                <option value="Specialists in intellectual and scientific activities">Specialists in intellectual and
+                    scientific activities</option>
+                <option value="Intermediate level technicians and professions">Intermediate level technicians and
+                    professions</option>
+                <option value="Administrative staff">Administrative staff</option>
+                <option value="Personal services,security and safety workers and sellers">Personal services,security and
+                    safety workers and sellers</option>
+                <option value="Farmers and skilled workers in agriculture,fisheries and forestry">Farmers and skilled
+                    workers in agriculture,fisheries and forestry</option>
+                <option value="Skilled workers in industry,construction and craftsmen">Skilled workers in
+                    industry,construction and craftsmen</option>
+                <option value="Installation and machine operators and assembly workers">Installation and machine
+                    operators and assembly workers</option>
+                <option value="Unskilled workers">Unskilled workers</option>
+                <option value="Armed Forces professions">Armed Forces professions</option>
+                <option value="Other situation">Other situation</option>
+                <option value="Blank">Blank</option>
+                <option value="Armed Forces officers">Armed Forces officers</option>
+                <option value="Armed Forces sergeants">Armed Forces sergeants</option>
+                <option value="Other armed forces personnel">Other armed forces personnel</option>
+                <option value="Directors of administrative and commercial services">Directors of administrative and
+                    commercial services</option>
+                <option value="Hotel,Catering,trade and other services directors">Hotel,Catering,trade and other
+                    services directors</option>
+                <option value="Specialists in the physical sciences,mathematics,engineering and related techniques">
+                    Specialists in the physical sciences,mathematics,engineering and related techniques</option>
+                <option value="Health professionals">Health professionals</option>
+                <option value="Teachers">Teachers</option>
+                <option
+                    value="Specialists in finance,accounting,administrative organization,public and commercial realations">
+                    Specialists in finance,accounting,administrative organization,public and commercial realations
+                </option>
+                <option value="Intermediate level science and engineering technicians and professions">Intermediate
+                    level science and engineering technicians and professions</option>
+                <option value="Technicians and professionals of intermediate level of health">Technicians and
+                    professionals of intermediate level of health</option>
+                <option value="Intermediate level technicians from legal,social,sports,cultural and similar services">
+                    Intermediate level technicians from legal,social,sports,cultural and similar services</option>
+                <option value="Information and communication technology technicians">Information and communication
+                    technology technicians</option>
+                <option value="Office workers,secretaries in general and data processing operators">Office
+                    workers,secretaries in general and data processing operators</option>
+                <option value="Data,accounting,statistical,financial services and registry-related operators">
+                    Data,accounting,statistical,financial services and registry-related operators</option>
+                <option value="Other administrative support staff">Other administrative support staff</option>
+                <option value="Personal care workers">Personal care workers</option>
+                <option value="Protection and security services personnel">Protection and security services personnel
+                </option>
+                <option value="Market-oriented farmers and skilled agricultural and animal production workers">
+                    Market-oriented farmers and skilled agricultural and animal production workers</option>
+                <option value="Farmers,livestock keepers,fishemen,hunters and gatherers,subsistence">Farmers,livestock
+                    keepers,fishemen,hunters and gatherers,subsistence</option>
+                <option value="Skilled construction workers except electricians">Skilled construction workers except
+                    electricians</option>
+                <option value="Skilled workers in metallurgy and metalworking">Skilled workers in metallurgy and
+                    metalworking</option>
+                <option value="Skilled workers in electricity and electronics">Skilled workers in electricity and
+                    electronics</option>
+                <option value="Workers in food processing,woodworking,clothing and other industries and crafts">Workers
+                    in food processing,woodworking,clothing and other industries and crafts</option>
+                <option value="Fixed plant and machine operators">Fixed plant and machine operators</option>
+                <option value="Assembly workers">Assembly workers</option>
+                <option value="Vehicle drivers and mobile equipment operators">Vehicle drivers and mobile equipment
+                    operators</option>
+                <option value="Unskilled workers in agriculture,animal production,fisheries and forestry">Unskilled
+                    workers in agriculture,animal production,fisheries and forestry</option>
+                <option value="Unskilled workers in extractive industry,construction,manufacturing and transport">
+                    Unskilled workers in extractive industry,construction,manufacturing and transport</option>
+                <option value="Meal preparation assistants">Meal preparation assistants</option>
+                <option value="Street vendors (except food) and street service providers">Street vendors (except food)
+                    and street service providers</option>
+            </select>
+
+
+
+            <label>Displaced</label>
+            <select id="displaced" name="Displaced" required>
+                <option value="">--Select Displaced</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+
+
+
+
+
+            <label>Educational special needs</label>
+            <select id="educational_special_needs" name="Educational special needs" required>
+                <option value="">--Select Educational special needs</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+
+
+
+
+
+            <label>Debtor</label>
+            <select id="debtor" name="Debtor" required>
+                <option value="">--Select Debtor</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+
+
+
+
+            <label>Tuition fees up to date</label>
+            <select id="tuition_fees_up_to_date" name="Tuition fees up to date" required>
+                <option value="">--Select Tuition fees up to date</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+
+
+
+            <label>Gender</label>
+            <select id="gender" name="Gender" required>
+                <option value="">--Select Gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+            </select>
+
+
+
+            <label>Scholarship holder</label>
+            <select id="scholarship_holder" name="Scholarship holder" required>
+                <option value="">--Select Scholarship Holder</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+
+
+            <label for="Age_at_enrollment">Age at enrollment</label>
+            <input type="number" id="age_at_enrollment" name="Age at enrollment" min="1" max="100"
+                placeholder="Enter your age at enrollment" required>
+
+
+
+            <label>International</label>
+            <select id="international" name="International" required>
+                <option value="">--Select International</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+
+
+            <div class="form-group">
+                <label for="Curricular_units_1st_sem_(credited)">Curricular units 1st sem (credited)</label>
+                <input type="number" id="Curricular_units_1st_sem_credited" name="Curricular units 1st sem (credited)"
+                    step="any" min="0" placeholder="e.g. 10.230206" required>
+            </div>
+
+
+
+            <div class="form-group">
+                <label for="Curricular_units_1st_sem_(enrolled)">Curricular units 1st sem (enrolled)</label>
+                <input type="number" id="Curricular_units_1st_sem_enrolled" name="Curricular units 1st sem (enrolled)"
+                    step="any" min="0" placeholder="e.g. 10.230206" required>
+            </div>
+
+
+
+            <div class="form-group">
+                <label for="Curricular_units_1st_sem_(evaluations)">Curricular units 1st sem (evaluations)</label>
+                <input type="number" id="Curricular_units_1st_sem_evaluations"
+                    name="Curricular units 1st sem (evaluations)" step="any" min="0" placeholder="e.g. 10.230206"
+                    required>
+            </div>
+
+
+
+
+            <div class="form-group">
+                <label for="Curricular_units_1st_sem_(approved)">Curricular units 1st sem (approved)</label>
+                <input type="number" id="Curricular_units_1st_sem_approved" name="Curricular units 1st sem (approved)"
+                    step="any" min="0" placeholder="e.g. 10.230206" required>
+            </div>
+
+
+
+
+            <div class="form-group">
+                <label for="Curricular_units_1st_sem_(grade)">Curricular units 1st sem (grade)</label>
+                <input type="number" id="Curricular_units_1st_sem_grade" name="Curricular units 1st sem (grade)"
+                    step="any" min="0" placeholder="e.g. 10.230206" required>
+            </div>
+
+
+
+            <div class="form-group">
+                <label for="Curricular_units_1st_sem_(without_evaluations)">Curricular units 1st sem (without
+                    evaluations)</label>
+                <input type="number" id="Curricular_units_1st_sem_without_evaluations"
+                    name="Curricular units 1st sem (without evaluations)" step="any" min="0"
+                    placeholder="e.g. 10.230206" required>
+            </div>
+
+
+
+
+            <div class="form-group">
+                <label for="Curricular_units_2nd_sem_(credited)">Curricular units 2nd sem (credited)</label>
+                <input type="number" id="Curricular_units_2nd_sem_credited" name="Curricular units 2nd sem (credited)"
+                    step="any" min="0" placeholder="e.g. 10.230206" required>
+            </div>
+
+
+
+
+
+            <div class="form-group">
+                <label for="Curricular_units_2nd_sem_(enrolled)">Curricular units 2nd sem (enrolled)</label>
+                <input type="number" id="Curricular_units_2nd_sem_enrolled" name="Curricular units 2nd sem (enrolled)"
+                    step="any" min="0" placeholder="e.g. 10.230206" required>
+            </div>
+
+
+
+
+            <div class="form-group">
+                <label for="Curricular_units_2nd_sem_(evaluations)">Curricular units 2nd sem (evaluations)</label>
+                <input type="number" id="Curricular_units_2nd_sem_evaluations"
+                    name="Curricular units 2nd sem (evaluations)" step="any" min="0" placeholder="e.g. 10.230206"
+                    required>
+            </div>
+
+
+            <div class="form-group">
+                <label for="Curricular_units_2nd_sem_(approved)">Curricular units 2nd sem (approved)</label>
+                <input type="number" id="Curricular_units_2nd_sem_approved" name="Curricular units 2nd sem (approved)"
+                    step="any" min="0" placeholder="e.g. 10.230206" required>
+            </div>
+
+
+
+            <div class="form-group">
+                <label for="Curricular_units_2nd_sem_(grade)">Curricular units 2nd sem (grade)</label>
+                <input type="number" id="Curricular_units_2nd_sem_grade" name="Curricular units 2nd sem (grade)"
+                    step="any" min="0" placeholder="e.g. 10.230206" required>
+            </div>
+
+
+
+
+            <div class="form-group">
+                <label for="Curricular_units_2nd_sem_(without_evaluations)">Curricular units 2nd sem (without
+                    evaluations)</label>
+                <input type="number" id="Curricular_units_2nd_sem_without_evaluations"
+                    name="Curricular units 2nd sem (without evaluations)" step="any" min="0"
+                    placeholder="e.g. 10.230206" required>
+            </div>
+
+            <button type="submit">Predict</button>
+        </form>
+
+        <div id="result"></div>
+    </div>
+
+
+    <!--<script src="{{url_for('static',filename='script.js')}}"></script>-->
+</body>
+
+</html>

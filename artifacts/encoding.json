@@ -10,7 +10,7 @@
     "Application mode":{
         "1st phase general contingent":1,
         "Ordinance no.612/93":2,
-        "1st phase special contingent (Azores island":3,
+        "1st phase special contingent (Azores island)":3,
         "Holders of other higher courses":4,
         "Ordinance no. 854-B/99":5,
         "International student (bachelor)":6,
@@ -21,11 +21,11 @@
         "Ordinance no.533-A/99 item b3 (Other institution)":11,
         "Over 23 years old":12,
         "Transfer":13,
-        "Change of coures":14,
+        "Change of courses":14,
         "Technological specialization diploma holders":15,
         "Change of institution/course":16,
         "Short cycle diploma holders":17,
-        "Change of institution/course (international":18
+        "Change of institution/course (international)":18
     },
     "Course":{
         "Biofuel Production Technologies":1,

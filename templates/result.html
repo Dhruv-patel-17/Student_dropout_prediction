@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Student Dropout Prediction</title>
+        <link rel="stylesheet" href="{{ url_for('static',filename='design.css')}}">
+    </head>
+    <body>
+        <div class="card">
+            <h1>Prediction Result</h1>
+
+            <div class="result {{ 'high' if prediction=='HIGH RISK' else 'low'}}">
+                {{prediction}}
+            </div>
+            <p class="prob">
+                Dropout Probability: <span>{{ probability }}</span>
+            </p>
+
+            <a href="/" class="btn">Predict Again</a>
+        </div>
+    </body>
+</html>
