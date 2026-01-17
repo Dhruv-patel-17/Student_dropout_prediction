@@ -12,10 +12,10 @@ import sys
 
 app=Flask(__name__)
 
-with open(r"C:\Users\Dhruv\student_dropout_prediction\artifacts\model.pkl","rb") as f:
+with open(r"artifacts\model.pkl","rb") as f:
     model=pickle.load(f)
 
-with open(r"C:\Users\Dhruv\student_dropout_prediction\artifacts\preprocessor.pkl","rb") as f:
+with open(r"artifacts\model.pkl","rb") as f:
     preprocessor=pickle.load(f)
 @app.route("/")
 def home():

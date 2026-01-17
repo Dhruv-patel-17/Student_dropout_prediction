@@ -8,5 +8,6 @@ mlxtend
 scikit-learn
 xgboost
 lightgbm
-flask
+Flask
+gunicorn
 -e .
