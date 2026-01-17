@@ -9,14 +9,19 @@ import pickle
 import numpy as np
 import pandas as pd
 import sys
+import os
 
 app=Flask(__name__)
+model_path=os.path.join('artifacts','model.pkl')
+preprocessor_path=os.path.join('artifacts','preprocessor.pkl')
 
-with open(r"artifacts\model.pkl","rb") as f:
+with open(model_path,"rb") as f:
     model=pickle.load(f)
 
-with open(r"artifacts\model.pkl","rb") as f:
+
+with open(preprocessor_path,"rb") as f:
     preprocessor=pickle.load(f)
+    
 @app.route("/")
 def home():
     return render_template("index.html")  
