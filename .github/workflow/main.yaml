@@ -1,51 +1,22 @@
-#Your workflow name.
-name: Deploy to render.
+name: Deploy to Render
 
-# Run workflow on every push to main branch
-on: 
+on:
   push:
-    branches: [main]
+    branches:
+      - main
 
-#Your workflow jobs.
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
+
     steps:
-      #Check-out your repository.
-      - name: Checkout
-        uses: action/checkout@v2
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-###! IMPORTANT PART !###
+      - name: Trigger Render Deploy
+        run: |
+          curl -X POST "$RENDER_DEPLOY_HOOK"
+        env:
+          RENDER_DEPLOY_HOOK: ${{ secrets.RENDER_DEPLOY_HOOK }}
 
-      - name: Build,Push and Release a Docker container to Render. #Your custom step name.
-        uses: gounit/render-docker-deploy@v1.3.3 # Github action name (leave it as it is).
-        with:
-          # Below you must provide variables for your render app.
-
-          # The email address associated with your Render account.
-          # If you don't want to use repository secrets (which is reccommended) you can do:
-          # email: my.email@example.com
-          email: ${{ secrets.RENDER_EMAIL }}
-
-          # Render API Key associated with provided user's email.
-          # API Key is available under your Render account settings.
-          render_api_key: ${{ secrets.RENDER_API_KEY }}
-
-          # Name of the render application to which the build is to be sent.
-          render_app_name: ${{ secrets.RENDER_APP_NAME }}
-
-          # (Optional,default: ",/")
-          # Dockerfile directory.
-          # For example, if you have a Dockerfile in the root of your project,
-          docker_directory: ./
-
-          # (Optional, defualt: "Dockerfile")
-          # Dockerfile name.
-          dockerfile_name: Dockerfile
-
-          # (Optional, default: "")
-          # Additional options of docker build command.
-          docker_optional: "--no-cache"
-          
-###! IMPORTANT PART !###
          
