@@ -17,11 +17,6 @@ def get_requirements(file_path):
     return requirements    
 
 
-
-
-
-
-
 setup(
     name='student_dropout_prediction',
     version='0.0.1',
