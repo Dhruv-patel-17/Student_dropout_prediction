@@ -1,6 +1,6 @@
 body{
     height:100vh;
-    background:linear-gradient(135deg,#1e3c72,#2a5298);
+    background:linear-gradient(135deg,#eae2d1,#eee5d3);
     font-family:Arial, sans-serif;
     display:flex;
     justify-content:center;
@@ -28,13 +28,13 @@ body{
 }
 
 .result.high{
-    background:#ffe5e5;
-    color:#d8000c;
+    background:#e8c6c6;
+    color:#900404;
 }
 
 .result.low{
-    background: #e6fffa;
-    color:#006644;
+    background: #a1dec9;
+    color:#02583b;
 }
 
 .prob{
@@ -49,8 +49,8 @@ body{
     display: inline-block;
     margin-top: 20px;
     padding: 10px 20px;
-    background: #667eea;
-    color: #fff;
+    background:linear-gradient(135deg,#0c0c0c,#080806);
+    color: #ffffff;
     text-decoration: none;
     border-radius: 8px;
 }

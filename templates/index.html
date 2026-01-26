@@ -9,7 +9,11 @@
 
 <body>
     <div class="container">
-        <h1>Student Dropout Prediction</h1>
+        <div class="form-header">
+            <img src="{{ url_for('static',filename='student_dropout_prediction.jpeg') }}"
+                alt="Student Dropout Prediction Icon" class="header-image">
+                <h1>Student Dropout Prediction</h1>
+        </div>        
 
         <form action="{{url_for('predict')}}" method="POST" id="predictForm">
 

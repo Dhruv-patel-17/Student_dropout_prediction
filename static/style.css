@@ -7,7 +7,7 @@
 }
 body{
     min-height:100vh;
-    background:linear-gradient(135deg,#1e3c72,#2a5298);
+    background:linear-gradient(135deg,#eae2d1,#eee5d3);
     display:flex;
     justify-content:center;
     align-items:center;
@@ -16,7 +16,7 @@ body{
 
 .container{
     width: 100%;
-    background:#f8f9fb;
+    background:#eee5d3;
     max-width:850px;
     padding:30px 40px;
     border-radius:48px;
@@ -27,9 +27,20 @@ body{
 .container h2{
     text-align:center;
     margin-bottom:35px;
-    color:#1e3c72;
+    color:rgba(17, 3, 3, 0.878);
     font-weight:800;
-    font-size:28px;
+    font-size:44px;
+}
+
+.form-header{
+    text-align:center;
+    margin-bottom: 35px;
+}
+
+.header-image{
+    width: 730px;
+    height: auto;
+    margin-bottom: 10px;
 }
 
 form{
@@ -47,7 +58,7 @@ form{
 
 h1{
     text-align:center;
-    margin-bottom:20px;
+    margin-bottom:70px;
 }
 
 input,
@@ -55,7 +66,7 @@ select{
     width:100%;
     padding:11px 12px;
     border-radius:8px;
-    border:1px solid #ccc;
+    border:1px solid #0e0808;
     font-size:14px;
     transition:all 0.3s ease;
     background-color:#fafafa;
@@ -89,7 +100,7 @@ button{
     grid-column:span 2;
     padding:14px;
     border-radius:10px;
-    background:linear-gradient(135deg,#1e3c72,#2a5298);
+    background:linear-gradient(135deg,#141313,#080806);
     color:#fff;
     font-size:16px;
     font-weight:600;
@@ -99,7 +110,7 @@ button{
 }
 button:hover{
     transform:translate(-2px);
-    box-shadow:0 10px 25px rgba(0,0,0,0.3);
+    box-shadow:0 10px 25px #f7e8c8;
 }
 
 @media(max-width:768px){
