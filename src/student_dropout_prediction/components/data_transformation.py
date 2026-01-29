@@ -16,6 +16,7 @@ import os
 @dataclass
 class DataTransformationConfig:
     preprocessor_obj_file_path=os.path.join('artifacts','preprocessor.pkl')
+    
 
 class DataTransformation:
     def __init__(self):
@@ -60,6 +61,8 @@ class DataTransformation:
                 ]
             )
 
+            
+
             return preprocessor
         except Exception as e:
             raise CustomException(e,sys)       
@@ -93,16 +96,23 @@ class DataTransformation:
 
             logging.info("Applying preprocessing on training and test dataframe")
 
-            input_feature_train_arr=preprocessing_obj.fit_transform(input_feature_train_df)
-            
-            input_feature_test_arr=preprocessing_obj.transform(input_feature_test_df)
+            input_feature_train_data=pd.DataFrame(
+                preprocessing_obj.fit_transform(input_feature_train_df),
+                columns=preprocessing_obj.named_steps["static_encoder"].feature_names_
+            )    
+            input_feature_test_data=pd.DataFrame(
+                preprocessing_obj.transform(input_feature_test_df),
+                columns=preprocessing_obj.named_steps["static_encoder"].feature_names_
+            )    
 
-            train_arr=np.c_[
-                input_feature_train_arr,np.array(target_feature_train_df)
-            ]
-            test_arr=np.c_[
-                input_feature_test_arr,np.array(target_feature_test_df)
-            ]
+            train_df=pd.concat([
+                input_feature_train_data,target_feature_train_df
+            ],axis=1)
+            test_df=pd.concat([
+                input_feature_test_data,target_feature_test_df
+            ],axis=1)
+
+            
 
             logging.info("Saved preprocessing object")
 
@@ -112,9 +122,11 @@ class DataTransformation:
             )
 
             return(
-                train_arr,
-                test_arr,
-                self.data_transformation_config.preprocessor_obj_file_path
+                train_df,
+                test_df,
+                self.data_transformation_config.preprocessor_obj_file_path,
+            
+
             )
 
 
@@ -122,3 +134,4 @@ class DataTransformation:
 
         except Exception as e:
             raise CustomException(sys,e)
+        
