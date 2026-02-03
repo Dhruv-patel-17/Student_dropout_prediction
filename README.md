@@ -29,7 +29,7 @@ This data set is [predict-students-dropout-and-academic-success](https://www.kag
 
 ### Exploratory Data Analysis:
 * Exploratory Data Analysis is the first step of understanding your data and acquiring domain knowledge.
-<img width="1000" alt="image" src="doc/EDA.png">
+<img width="1000" alt="image" src="doc/final_report.png">
 
 ### Data Preprocessing and Feature Selection:
 
@@ -39,8 +39,8 @@ This data set is [predict-students-dropout-and-academic-success](https://www.kag
 
  ### Model Training:
 * On training my model using several classification algorithms such as *XGBoost*, *Random Forest*, *Extra Trees*, *Decision Trees*, *Light GBM* the model trained with **Light GBM** gave good results and less memory. 
-* Also,used hyper-parameter tuning on Light GBM Classifier (baseline model) using **GridSearchCV**.
-.
+* Also,used hyper-parameter tuning on Light GBM Classifier (baseline model) using **GridSearchCV**
+
 * As per the problem statement I used **Recall Score** as the evaluation metric for my model.
 <img width="1000" alt="image" src="doc/final.png">
 
