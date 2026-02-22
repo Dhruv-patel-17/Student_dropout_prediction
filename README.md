@@ -56,3 +56,5 @@ This data set is [predict-students-dropout-and-academic-success](https://www.kag
     ```shell
     python app.py
     ```
+
+Suggestions for improvement are whole-heartedly welcome.
