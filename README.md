@@ -56,5 +56,24 @@ This data set is [predict-students-dropout-and-academic-success](https://www.kag
     ```shell
     python app.py
     ```
+## DVC Pipeline
+This project uses DVC(Data Version Control) to manage and track dataset
 
+* Pull dataset:
+     ```shell
+     dvc pull
+     ```
+
+## Docker Setup
+* Build Docker Image:
+     ```shell
+     docker build -t student_dropout_prediction .
+     ```
+* Run the container:
+     ```shell
+     docker run -p 8501:8501 student_dropout_prediction
+
+## CI/CD Pipeline
+This project uses **Github Actions** for automation.
+     
 Suggestions for improvement are whole-heartedly welcome.
