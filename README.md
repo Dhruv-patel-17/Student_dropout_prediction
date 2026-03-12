@@ -75,5 +75,9 @@ This project uses DVC(Data Version Control) to manage and track dataset
 
 ## CI/CD Pipeline
 This project uses **Github Actions** for automation.
-     
+
+## Architecture
+<img width="800" alt="image" src="doc/architecture.png">
+
+
 Suggestions for improvement are whole-heartedly welcome.
